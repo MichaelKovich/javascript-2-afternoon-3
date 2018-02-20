@@ -27,7 +27,9 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+let first = (arr, cb) => {
+  return cb(arr[0]);
+};
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -38,8 +40,6 @@ first(names, function(firstName){
 });
 // Do not edit the code above.
 
-
-
 ////////// PROBLEM 2 //////////
 
 /*
@@ -47,7 +47,9 @@ first(names, function(firstName){
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-//Code Here
+let last = (arr, cb) => {
+  cb(arr[ arr.length - 1 ]);
+};
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -56,8 +58,6 @@ last(names, function(lastName){
 });
 // Do not edit the code above.
 
-
-
 ////////// PROBLEM 3 //////////
 
 /*
@@ -65,15 +65,16 @@ last(names, function(lastName){
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
+let multiply = (x, y, cb) => {
+  let num = x * y;
+  cb(num);
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 4 //////////
 
@@ -84,7 +85,10 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+let contains = (arr, name, cb) => {
+  let result = arr.includes(name);
+  cb(result);
+};
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -96,8 +100,6 @@ contains(names, 'Colt', function(result){
 });
 // Do not edit the code above.
 
-
-
 ////////// PROBLEM 5 //////////
 
 /*
@@ -105,15 +107,22 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+let uniq = (arr, cb) => {
+  let uniqueArray = [];
+  arr.forEach(function (element) {
+    if (uniqueArray.includes(element)) { 
+    } else {
+      uniqueArray.push(element);
+    }
+  })
+  cb(uniqueArray);
+};
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 6 //////////
 
@@ -122,15 +131,17 @@ uniq(names, function(uniqArr){
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-//Code Here 
+let each = (arr, cb) => {
+  arr.forEach(function (element, index) {
+    cb(element, index);
+  })
+};
 
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 7 //////////
 
@@ -139,7 +150,13 @@ each(names, function(item, indice){
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
 
-// Code here
+let getUserById = (arr, id, cb) => {
+  arr.forEach(function (element) {
+    if (element.id === id) {
+      cb(element);
+    }
+  })
+};
 
 // Do not edit the code below.
 var users = [
